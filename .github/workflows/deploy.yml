@@ -29,7 +29,7 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1.1.2
         with:
-          deno-version: v1.x
+          deno-version: latest
 
       # Step 3: Install dependencies and build with Vite
       - name: Build with Vite using Deno
