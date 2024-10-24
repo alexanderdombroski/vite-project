@@ -27,9 +27,9 @@ jobs:
 
       # Step 2: Setup Deno environment
       - name: Setup Deno
-        uses: denoland/setup-deno@v1.1.2
+        uses: denoland/setup-deno@v2
         with:
-          deno-version: latest
+          deno-version: v2.x
 
       # Step 3: Install dependencies and build with Vite
       - name: Build with Vite using Deno
