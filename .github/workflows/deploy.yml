@@ -34,7 +34,7 @@ jobs:
       # Step 3: Install dependencies and build with Vite
       - name: Build with Vite using Deno
         run: |
-          deno run -A --node-modules-dir npm:vite build
+          deno run build
 
       # Step 4: Setup Pages configuration
       - name: Setup Pages
