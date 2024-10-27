@@ -49,7 +49,14 @@ nav ul li a:hover {
   color: #004265;
 }
 
-#content {
+#home_content {
+  margin-top: 100px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#calendar_content {
   margin-top: 100px;
   padding: 20px;
 }
