@@ -64,6 +64,13 @@ nav ul li a:hover {
   border: 2px solid #004265;
   border-radius: 10px;
   padding: 10px;
+  background-color: #D65B15;
+  color: white;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+#home_content section h2 {
+  border-bottom: 2px solid #004265;
 }
 
 #calendar_content {
