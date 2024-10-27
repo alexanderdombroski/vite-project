@@ -3,6 +3,10 @@ body {
   font-size: 1.2em;
 }
 
+#home-body {
+  background-color: #F1A36C;
+}
+
 header {
   background-image: linear-gradient(to bottom, #004265, #002d4e);
   color: white;
@@ -64,9 +68,9 @@ nav ul li a:hover {
   border: 2px solid #004265;
   border-radius: 10px;
   padding: 10px;
-  background-color: #D65B15;
-  color: white;
-  box-shadow: 5px 5px 5px #888888;
+  background-color: white;
+  color: black;
+  box-shadow: 5px 5px 5px black;
 }
 
 #home_content section h2 {
@@ -87,7 +91,18 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-
   display: flex;
   justify-content: space-around;
+  align-items: center;
+}
+
+#github-logo {
+  width: 50px;
+  height: auto;
+}
+
+@media (min-width: 760px) {
+  #home_content section {
+    width: 760px;
+  }
 }
