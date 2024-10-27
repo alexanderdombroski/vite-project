@@ -7,7 +7,13 @@ export default defineConfig({
   base: '/vite-project/',
   build: {
     outDir: '../dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: 'src/index.html', 
+        calendar: 'src/calendar.html' 
+      }
+    }
   },
   plugins: [deno()],
 })
