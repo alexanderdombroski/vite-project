@@ -3,6 +3,9 @@ body {
   font-size: 1.2em;
 }
 
+
+/* ------------------------ Header ------------------------ */
+
 header {
   background-image: linear-gradient(to bottom, #004265, #002d4e);
   color: white;
@@ -50,6 +53,8 @@ nav ul li a:hover {
   color: #004265;
 }
 
+/* ------------------------ Main ------------------------ */
+
 #home_content {
   margin-top: 100px;
   padding: 20px;
@@ -80,6 +85,8 @@ nav ul li a:hover {
   margin-bottom: 75px;
 }
 
+/* ------------------------ Footer ------------------------ */
+
 footer {
   background-image: linear-gradient(to bottom, #004265, #002d4e);
   color: white;
@@ -91,4 +98,13 @@ footer {
 
   display: flex;
   justify-content: space-around;
+  align-items: center;
+}
+
+footer * {
+  margin: 0 10px;
+}
+
+footer img, footer a {
+  height: 50px;
 }
