@@ -3,6 +3,9 @@ body {
   font-size: 1.2em;
 }
 
+
+/* ------------------------ Header ------------------------ */
+
 #home-body {
   background-color: #F1A36C;
 }
@@ -15,6 +18,7 @@ header {
   top: 0;
   display: flex;
   align-items: center;
+  z-index: 2;
 }
 
 #logo {
@@ -53,6 +57,8 @@ nav ul li a:hover {
   color: #004265;
 }
 
+/* ------------------------ Main ------------------------ */
+
 #home_content {
   margin-top: 100px;
   padding: 20px;
@@ -82,6 +88,8 @@ nav ul li a:hover {
   padding: 20px;
   margin-bottom: 75px;
 }
+
+/* ------------------------ Footer ------------------------ */
 
 footer {
   background-image: linear-gradient(to bottom, #004265, #002d4e);
