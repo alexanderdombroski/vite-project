@@ -1,0 +1,37 @@
+
+#calendar-page h1 {
+    text-align: center;
+}
+
+#calendar-header, #calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: 700px;
+    margin: 10px auto;
+}
+
+#calendar-header h2 {
+    grid-column: span 7;
+    text-align: center;
+}
+
+#calendar-header p {
+    text-align: center;
+}
+
+#calendar-header *, .day {
+    border: solid 1px black;
+    margin: 0;
+}
+
+.day {
+    position: relative;
+    height: 100px;
+    width: 100%;
+}
+
+.day span {
+    position: relative;
+    left: 2px;
+    top: 2px;
+}
