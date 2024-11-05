@@ -1,18 +1,12 @@
-let heroImage = document.querySelector('#home-hero-image');
+const heroImage = document.querySelector('#home-hero-image');
 
 
 function changeImage() {
-    if (window.innerWidth < 1000) {
-        heroImage.src = './images/planner2.avif';
-    } else {
-        heroImage.src = './images/planner1.webp';
-    }
+    heroImage.src = globalThis.innerWidth < 1000 ? './images/planner2.avif' : './images/planner1.webp';
 }
 
-function init(){
-    window.addEventListener('resize', changeImage);
-    window.addEventListener('load', changeImage);
-    window.addEventListener('DOMContentLoaded', changeImage);
-}
-
-init();
+(function initListeners(){
+    globalThis.addEventListener('resize', changeImage);
+    globalThis.addEventListener('load', changeImage);
+    globalThis.addEventListener('DOMContentLoaded', changeImage);
+})();
