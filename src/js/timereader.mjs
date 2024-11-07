@@ -6,6 +6,13 @@ function getMonthName(date = new Date()) {
     return monthNames[date.getMonth()]
 }
 
+function getPrevMonth(date = new Date()) {
+    return new Date(date.getFullYear(), date.getMonth() - 1, date.getDate())
+}
+function getNextMonth(date = new Date()) {
+    return new Date(date.getFullYear(), date.getMonth() + 1, date.getDate())
+}
+
 function getMonthStart(date = new Date()) {
     return new Date(date.getFullYear(), date.getMonth(), 1).getDay()
 }
@@ -19,4 +26,4 @@ function getMonthEnd(date = new Date()) {
 }
 
 
-export { getMonthName, getMonthStart, getPrevMonthEnd, getMonthEnd }
+export { getMonthName, getMonthStart, getPrevMonthEnd, getMonthEnd, getPrevMonth }
