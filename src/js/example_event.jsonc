@@ -1,0 +1,24 @@
+// Example structure of goals and events
+// List of goals/events
+[
+  {
+    "type": "",
+    "title": "",
+    "desc": "", // Optional
+    "startDateTime": "",
+    "endDateTime": "",
+    "completed": true, // Completing a goal will render all subevernts as commpleted, but will not make them completed
+    "recurring": {
+        "days": "MTThF",
+        "until": "date" // or -1 for forever, or number of times
+    },
+    "subevents": [
+      // tasks for events or steps for goals?
+      {
+        "title": "",
+        "dateTime": "",
+        "completed": true
+      }
+    ]
+  }
+]
