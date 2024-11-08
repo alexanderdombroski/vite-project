@@ -6,10 +6,32 @@ function changeHeroImage() {
     heroImage.src = globalThis.innerWidth < 1000 ? './images/planner2.avif' : './images/planner1.webp';
 }
 
-(async function init() {
-    const countryList = await getCountryList();
+function handleCountryFormSubmit() {
     const countryForm = document.querySelector('#country-form');
+    
+    countryForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const countryCode = document.querySelector('#country-select').value;
+
+        // Check if a country was selected
+        if (!countryCode){
+            alert('Please select a country');
+            return;
+        } else {
+            // Save selected country to local storage
+            localStorage.setItem('selectedCountry', countryCode);
+
+            // Redirect to calendar page
+            globalThis.location.href = './calendar.html';
+        }
+    });
+}
+
+(async function addCountryForm() {
+    const countryList = await getCountryList();
+    const countryForm = document.querySelector('#country-form-options');
     countryForm.insertAdjacentHTML('beforeend', countryFormTemplate(countryList));
+    handleCountryFormSubmit();
 })();
 
 (function initListeners(){

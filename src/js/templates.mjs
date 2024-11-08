@@ -15,5 +15,6 @@ export function countryFormTemplate(data){
         <option value="">Select a country</option>
         ${data.map(country => `<option value="${country.countryCode}">${country.name}</option>`).join('')}
     </select>
+    <button id="country-submit">Submit</button>
     `
 };
