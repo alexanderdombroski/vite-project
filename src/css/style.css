@@ -1,13 +1,23 @@
+:root {
+  --nav-gradient: linear-gradient(to bottom, #004265, #002d4e);
+
+  --primary-color: var(--nav-gradient);
+  --secondary-color: #F1A36C;
+  --accent-color: #00A878;
+}
+
+
+
 body {
   margin: 0;
   font-size: 1.2em;
-  background-color: #F1A36C;
+  background-color: var(--secondary-color);
 }
 
 /* ------------------------ Header ------------------------ */
 
 header {
-  background-image: linear-gradient(to bottom, #004265, #002d4e);
+  background-image: var(--nav-gradient);
   color: white;
   width: 100%;
   position: fixed;
@@ -112,16 +122,10 @@ nav ul li a:hover {
   margin: 10px;
 }
 
-#calendar_content {
-  margin-top: 100px;
-  padding: 20px;
-  margin-bottom: 75px;
-}
-
 /* ------------------------ Footer ------------------------ */
 
 footer {
-  background-image: linear-gradient(to bottom, #004265, #002d4e);
+  background-image: var(--nav-gradient);
   color: white;
   text-align: center;
   padding: 10px;
@@ -136,6 +140,72 @@ footer {
 #github-logo {
   width: 50px;
   height: auto;
+}
+
+/* ------------------------ Calendar ------------------------ */
+
+#calendar-page h1 {
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+}
+
+.controls > * {
+  margin: 10px;
+}
+
+.prev, .next {
+  width: 100px;
+  height: 20px;
+  border: none;
+  background-color: var(--accent-color);
+}
+
+.prev:hover, .next:hover {
+  border: var(--primary-color) 2px solid;
+  transform: scale(1.05);
+}
+
+#calendar_content {
+  margin-top: 100px;
+  padding: 20px;
+  margin-bottom: 75px;
+}
+
+#calendar-header, #calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 700px;
+  margin: 10px auto;
+}
+
+#calendar-header h2 {
+  grid-column: span 7;
+  text-align: center;
+}
+
+#calendar-header p {
+  text-align: center;
+}
+
+#calendar-header > *, .day {
+  border: solid 1px black;
+  margin: 0;
+}
+
+.day {
+  position: relative;
+  height: 100px;
+  width: 100%;
+}
+
+.day span {
+  position: absolute;
+  left: 2px;
+  top: 2px;
 }
 
 /* ------------------------ Media Queries ------------------------ */

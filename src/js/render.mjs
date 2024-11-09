@@ -2,6 +2,8 @@
 import { getMonthName, getMonthEnd, getPrevMonthEnd, getMonthStart } from './timereader.mjs';
 import { dayTemplate } from "./templates.mjs";
 
+// ---------------------- Calendar ----------------------
+
 function loadCalendar(date = new Date()) {
     // Load Calendar Title
     const title = `${getMonthName(date)} - ${date.getFullYear()}`;
@@ -12,6 +14,8 @@ function loadCalendar(date = new Date()) {
     const monthStartWeekdayNum = getMonthStart(date);
     const prevMonthEnd = getPrevMonthEnd(date);
     
+    calendar.innerHTML = "";
+
     for (let i = prevMonthEnd - monthStartWeekdayNum + 1; i <= prevMonthEnd; i++) {
         calendar.innerHTML += dayTemplate(i);
     }
