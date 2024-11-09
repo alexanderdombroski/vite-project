@@ -1,3 +1,5 @@
+// ---------------- Month Generation ----------------
+
 function getMonthName(date = new Date()) {
     const monthNames = [
         "January", "February", "March", "April", "May", "June", 
@@ -6,24 +8,49 @@ function getMonthName(date = new Date()) {
     return monthNames[date.getMonth()]
 }
 
-function getPrevMonth(date = new Date()) {
-    return new Date(date.getFullYear(), date.getMonth() - 1, date.getDate())
-}
-function getNextMonth(date = new Date()) {
-    return new Date(date.getFullYear(), date.getMonth() + 1, date.getDate())
+function getPrevMonthEnd(date = new Date()) {
+    return new Date(date.getFullYear(), date.getMonth(), 0).getDate();
 }
 
 function getMonthStart(date = new Date()) {
     return new Date(date.getFullYear(), date.getMonth(), 1).getDay()
 }
 
-function getPrevMonthEnd(date = new Date()) {
-    return new Date(date.getFullYear(), date.getMonth(), 0).getDate();
-}
-
 function getMonthEnd(date = new Date()) {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 }
 
+// ---------------- Week Generation ----------------
 
-export { getMonthName, getMonthStart, getPrevMonthEnd, getMonthEnd, getPrevMonth }
+function getWeekDays(date = new Date()) {
+    const weekDays = []
+    const sunday = date.getDate() - date.getDay()
+    for (let i = sunday; i < sunday + 7; i++) {
+        weekDays.push(new Date(date.getFullYear(), date.getMonth(), i))
+    }
+    return weekDays
+}
+
+const getWeekDates = () => getWeekDays().map(day => day.getDate())
+
+// ---------------- Navigation ----------------
+
+function getPrevMonth(date = new Date()) {
+    return new Date(date.getFullYear(), date.getMonth() - 1, date.getDate())
+}
+function getNextMonth(date = new Date()) {
+    return new Date(date.getFullYear(), date.getMonth() + 1, date.getDate())
+}
+function getPrevWeek(date = new Date()) {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate() - 7)
+}
+function getNextWeek(date = new Date()) {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate() + 7)
+}
+
+
+export { 
+    getMonthName, getMonthStart, getPrevMonthEnd, getMonthEnd, 
+    getWeekDates, getWeekDays,
+    getPrevMonth, getNextMonth, getNextWeek, getPrevWeek
+ }
