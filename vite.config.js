@@ -16,4 +16,5 @@ export default defineConfig({
     }
   },
   plugins: [deno()],
+  publicDir: 'public'
 })
