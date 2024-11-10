@@ -16,7 +16,6 @@ function loadPrev() {
 }
 function loadNext() {
     selectedDate = getNextMonth(selectedDate)
-    console.log(selectedDate)
     loadCalendar(selectedDate)
 }
 

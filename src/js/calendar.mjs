@@ -1,14 +1,10 @@
-import { loadCalendar, loadHolidays } from "./render.mjs";
-import { getHolidays } from "./holiday.mjs";
+import { loadCalendar } from "./render.mjs";
 import { initCalendarNavigation } from "./calendar-controls.mjs";
+import { loadHolidays } from  "./holiday.mjs"
 
 (async function loadPage() {
+    await loadHolidays()
     loadCalendar();
-
-    const holidays = await getHolidays();
-    loadHolidays(holidays);
 })();
 
-(function initListeners() {
-    initCalendarNavigation()
-})();
+initCalendarNavigation()

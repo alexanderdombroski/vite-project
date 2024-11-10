@@ -8,6 +8,12 @@ function getMonthName(date = new Date()) {
     return monthNames[date.getMonth()]
 }
 
+function getCalendarStart(date = new Date()) {
+    const calendarStart = new Date(date)
+    calendarStart.setDate(1 - getMonthStart(date));
+    return calendarStart;
+}
+
 function getPrevMonthEnd(date = new Date()) {
     return new Date(date.getFullYear(), date.getMonth(), 0).getDate();
 }
@@ -54,9 +60,17 @@ function getDateFromString(str) {
     return new Date(str + 'T00:00:00Z');
 }
 
+function defaultYear(date = new Date()) {
+    return new Date(new Date().getFullYear(), date.getMonth(), date.getDate())
+}
+
+function dateToString(date = new Date()) {
+    return date.toISOString().split('T')[0]
+}
+
 export { 
-    getMonthName, getMonthStart, getPrevMonthEnd, getMonthEnd, 
+    getCalendarStart, getMonthName, getMonthStart, getPrevMonthEnd, getMonthEnd, 
     getWeekDates, getWeekDays,
     getPrevMonth, getNextMonth, getNextWeek, getPrevWeek,
-    getDateFromString
+    getDateFromString, defaultYear, dateToString
 }
