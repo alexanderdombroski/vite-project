@@ -3,7 +3,7 @@ import { countryFormTemplate } from "./templates.mjs";
 
 function changeHeroImage() {
     const heroImage = document.querySelector('#home-hero-image');
-    heroImage.src = globalThis.innerWidth < 1000 ? './images/planner2.avif' : './images/planner1.webp';
+    heroImage.src = globalThis.innerWidth < 1000 ? './images/planner2.jpg' : './images/planner1.webp';
 }
 
 function handleCountryFormSubmit() {
