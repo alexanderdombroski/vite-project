@@ -1,9 +1,11 @@
 import { getCountryList } from "./holiday.mjs";
 import { countryFormTemplate } from "./templates.mjs";
+import p1 from '../assets/planner1.webp'
+import p2 from '../assets/planner2.avif'
 
 function changeHeroImage() {
     const heroImage = document.querySelector('#home-hero-image');
-    heroImage.src = globalThis.innerWidth < 1000 ? './assets/planner2.avif' : './assets/planner1.webp';
+    heroImage.src = globalThis.innerWidth < 1000 ? p2 : p1;
 }
 
 function handleCountryFormSubmit() {
