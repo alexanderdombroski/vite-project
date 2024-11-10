@@ -1,6 +1,6 @@
 
 async function getHolidays() {
-    const countryCode = localStorage.getItem('selectedCountry');
+    let countryCode = localStorage.getItem('selectedCountry');
     
     // If no country code is found, default to US
     if (!countryCode || countryCode === 'undefined') {
