@@ -57,7 +57,7 @@ function getNextWeek(date = new Date()) {
 // ---------------- General Purpose ----------------
 
 function getDateFromString(str) {
-    return new Date(str + 'T00:00:00Z');
+    return new Date(str + 'T' + timeToString());
 }
 
 function defaultYear(date = new Date()) {
@@ -65,7 +65,10 @@ function defaultYear(date = new Date()) {
 }
 
 function dateToString(date = new Date()) {
-    return date.toISOString().split('T')[0]
+    return date.toLocaleDateString('en-GB').split('T')[0]
+}
+function timeToString(date = new Date()) {
+    return date.toLocaleTimeString('en-GB', {hour12: false})
 }
 
 export { 
