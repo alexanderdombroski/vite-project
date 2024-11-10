@@ -5,7 +5,7 @@ import deno from '@deno/vite-plugin'
 export default defineConfig({
   root: 'src',
   base: '/vite-project/',
-  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.webp'],
+  assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.webp', '**/*.avif'],
   build: {
     outDir: '../dist',
     emptyOutDir: true,
