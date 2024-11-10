@@ -12,7 +12,9 @@
 </head>
 <body id="calendar-page">
     <header>
-        <img id="logo" src="./images/chronoplan_logo.png" alt="ChronoPlan Logo">
+        <a id="logo-link" href="./index.html">
+            <img id="logo" src="./images/chronoplan_logo.png" alt="ChronoPlan Logo">
+        </a>
         <nav>
           <h1>ChronoPlan</h1>
           <ul>
@@ -31,7 +33,7 @@
                 <i class="fa fa-arrow-right"></i>
             </button>
         </div>
-        <section>
+        <section id="calendar-container">
             <div id="calendar-header">
                 <h2 id="calendar-title"></h2>
                 <p>Sunday</p>
@@ -46,7 +48,7 @@
                 <!-- Dynamically inserted days here here -->
             </div>
         </section>
-        <section>
+        <section id="calendar-instructions">
             <h2>Instructions</h2>
             <ul>
                 <li>Lorem ipsum dolor sit amet</li>

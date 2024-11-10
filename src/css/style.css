@@ -28,6 +28,11 @@ header {
 }
 
 #logo {
+  width: 100px;
+  height: auto;
+}
+
+#logo-link {
   margin: 10px;
   width: 100px;
   height: auto;
@@ -42,6 +47,7 @@ nav {
 
 nav ul {
   display: flex;
+  justify-content: left;
   width: 100%;
   padding-left: 25px;
   list-style-type: none;
@@ -52,6 +58,7 @@ nav ul li {
 }
 
 nav ul li a {
+  display: block;
   color: white;
   text-decoration: none;
   padding: 5px;
@@ -61,6 +68,8 @@ nav ul li a {
 nav ul li a:hover {
   background-color: white;
   color: #004265;
+  border-radius: 5px;
+  transform: scale(1.2);
 }
 
 /* ------------------------ Main ------------------------ */
@@ -122,6 +131,7 @@ nav ul li a:hover {
   margin: 10px;
 }
 
+
 /* ------------------------ Footer ------------------------ */
 
 footer {
@@ -159,20 +169,38 @@ footer {
 
 .prev, .next {
   width: 100px;
-  height: 20px;
+  height: 25px;
   border: none;
   background-color: var(--accent-color);
 }
 
 .prev:hover, .next:hover {
   border: var(--primary-color) 2px solid;
-  transform: scale(1.05);
+  transform: scale(1.1);
+}
+
+#calendar-container {
+  background-color: white;
+  border: 2px solid #004265;
+  border-radius: 10px;
+  padding: 10px;
+  width: 850px;
+  margin: 0 auto;
 }
 
 #calendar_content {
   margin-top: 100px;
   padding: 20px;
   margin-bottom: 75px;
+}
+
+#calendar_content h1 {
+  background-color: white;
+  border: 2px solid #004265;
+  border-radius: 10px;
+  padding: 10px;
+  width: 400px;
+  justify-self: center;
 }
 
 #calendar-header, #calendar {
@@ -206,6 +234,20 @@ footer {
   position: absolute;
   left: 2px;
   top: 2px;
+}
+
+#calendar-instructions {
+  background-color: white;
+  border: 2px solid #004265;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0 auto;
+  width: 850px;
+  margin-top: 20px;
+}
+
+#calendar-instructions h2 {
+  border-bottom: 2px solid #004265;
 }
 
 /* ------------------------ Media Queries ------------------------ */
