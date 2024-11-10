@@ -48,9 +48,15 @@ function getNextWeek(date = new Date()) {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate() + 7)
 }
 
+// ---------------- General Purpose ----------------
+
+function getDateFromString(str) {
+    return new Date(str + 'T00:00:00Z');
+}
 
 export { 
     getMonthName, getMonthStart, getPrevMonthEnd, getMonthEnd, 
     getWeekDates, getWeekDays,
-    getPrevMonth, getNextMonth, getNextWeek, getPrevWeek
- }
+    getPrevMonth, getNextMonth, getNextWeek, getPrevWeek,
+    getDateFromString
+}
