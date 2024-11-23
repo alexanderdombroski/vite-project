@@ -1,4 +1,4 @@
-import { getDateFromString, defaultYear, dateToString } from "./timereader.mjs";
+import { getDateFromString, defaultYear, dateToString } from "../utils/timereader.mjs";
 
 const holidays = {};
 

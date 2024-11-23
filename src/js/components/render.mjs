@@ -1,7 +1,7 @@
 // Add templates to the page
-import { getCalendarStart, getMonthName, getMonthEnd, getPrevMonthEnd, getMonthStart } from './timereader.mjs';
+import { getCalendarStart, getMonthName, getMonthEnd, getPrevMonthEnd, getMonthStart } from '../utils/timereader.mjs';
 import { dayTemplate } from "./templates.mjs";
-import { getHolidays } from "./holiday.mjs";
+import { getHolidays } from "../api/holiday.mjs";
 
 // ---------------------- Calendar ----------------------
 

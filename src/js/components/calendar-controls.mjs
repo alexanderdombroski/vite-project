@@ -1,5 +1,5 @@
 import { loadCalendar } from "./render.mjs";
-import { getNextMonth, getPrevMonth } from "./timereader.mjs";
+import { getNextMonth, getPrevMonth } from "../utils/timereader.mjs";
 
 let selectedDate = new Date();
 
