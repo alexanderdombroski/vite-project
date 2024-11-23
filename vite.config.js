@@ -12,7 +12,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'src/index.html', 
-        calendar: 'src/calendar.html' 
+        calendar: 'src/calendar.html',
+        events: 'src/new-event.hmtl'
       }
     }
   },

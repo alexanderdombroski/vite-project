@@ -30,3 +30,9 @@ export function countryFormTemplate(data){
     <button id="country-submit">Submit</button>
     `
 };
+
+export function eventFormTemplate(data) {
+    return `
+        
+    `
+}
