@@ -11,18 +11,25 @@
     <script src="js/calendar.mjs" type="module" defer></script>
 </head>
 <body id="calendar-page">
-    <header>
-        <a id="logo-link" href="./index.html">
+    <header id="global-header">
+        <div id="global-header-left">
+          <a id="logo-link" href="./index.html">
             <img id="logo" src="./images/chronoplan_logo.png" alt="ChronoPlan Logo">
-        </a>
-        <nav>
-          <h1>ChronoPlan</h1>
-          <ul>
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./calendar.html">Planner</a></li>
-          </ul>
+          </a>
+          <h1 id="header-title">ChronoPlan</h1>
+        </div>
+        <div id="global-header-right">
+          <h2 id="main-menu-button">Menu</h2>
+        </div>
+        <nav class="header-drop-down">
+          <div id="main-menu">
+            <ul id="main-menu-list">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./calendar.html">Planner</a></li>
+            </ul>
+          </div>
         </nav>
-      </header>
+    </header>
     <main id="calendar_content">
         <h1>Calendar</h1>
         <div class="controls">

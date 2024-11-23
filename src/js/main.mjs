@@ -1,5 +1,6 @@
 import { getCountryList } from "./holiday.mjs";
 import { countryFormTemplate } from "./templates.mjs";
+import { mainMenuToggle } from "./menu-handler.js";
 import p1 from '../images/planner1.webp'
 import p2 from '../images/planner2.avif'
 
@@ -34,6 +35,7 @@ function handleCountryFormSubmit() {
     const countryForm = document.querySelector('#country-form-options');
     countryForm.insertAdjacentHTML('beforeend', countryFormTemplate(countryList));
     handleCountryFormSubmit();
+    mainMenuToggle();
 })();
 
 (function initListeners(){
