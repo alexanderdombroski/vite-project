@@ -2,7 +2,7 @@
 import { getCalendarStart, getMonthName, getMonthEnd, getPrevMonthEnd, getMonthStart } from '../utils/timereader.mjs';
 import { dayTemplate } from "./templates/templates.mjs";
 import { getHolidays } from "../api/holiday.mjs";
-import { eventFormTemplate } from "./templates/calendar-form.mjs";
+import { eventFormTemplate, subeventTemplate} from "./templates/calendar-form.mjs";
 
 // ---------------------- Calendar ----------------------
 
@@ -37,8 +37,26 @@ function loadCalendar(date = new Date()) {
     calendar.innerHTML += [...Array((7 - (monthStartWeekdayNum + monthEnd) % 7) % 7).keys()].map(getDayTemplate).join('');
 }
 
+// ---------------------- Event-Forum ----------------------
+
+let subevents;
+
 function loadEventForm() {
+    subevents = 0;
     document.getElementById("event-form").innerHTML = eventFormTemplate();
+    document.getElementById("add-sub").addEventListener("click", addSub);
+    document.getElementById("remove-sub").addEventListener("click", removeSub);
 }
+
+function addSub() {
+    document.getElementById("subevents").innerHTML += subeventTemplate(++subevents)
+}
+
+function removeSub() {
+    if (subevents == 0) return;
+    document.getElementById("subevents").lastElementChild.remove()
+    subevents -= 1;
+}
+
 
 export { loadCalendar, loadEventForm }

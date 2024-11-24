@@ -1,4 +1,4 @@
-const capitalize = str => str ? str[0].toUpperCase() + str.slice(1).toLowerCase() : '';
+import { capitalize } from "../../utils/str.mjs";
 
 export function eventFormTemplate(data = {type: "event"}) {
 	const { type, title, desc, startDateTime, endDateTime, completed, recurring, subevents } = data;
@@ -6,13 +6,7 @@ export function eventFormTemplate(data = {type: "event"}) {
 	return `
 		<h2>New ${capitalize(type)}</h2>
 		<fieldset>
-			<legend>${type} Information</legend>
-			
-			<label for="type">Event Type:</label>
-			<select name="type" id="type">
-				<option value="event">event</option>
-				<option value="goal">goal</option>
-			</select>
+			<legend>${capitalize(type)} Information</legend>
 
 			<label for="title">Title:</label>
 			<input name="title" id="title" type="text" placeholder="work">
@@ -52,15 +46,10 @@ export function eventFormTemplate(data = {type: "event"}) {
 			<legend>Sub${type}s</legend>
 
 			<div id="subevents">
-				<label for="date">Date:</label>
-				<input name="date" type="date">
-				<label for="time">Time:</label>
-				<input name="time" type="time">
-
-				<label for="completed">Completed:</label>
-				<input type="checkbox" name="completed">
+				
 			</div>
-
+			<button type="button" id="add-sub">Add Sub${type}</button>
+			<button type="button" id="remove-sub">Remove Sub${type}</button>
 
 		</fieldset>
 
@@ -68,4 +57,16 @@ export function eventFormTemplate(data = {type: "event"}) {
 	`;
 }
 
+export function subeventTemplate(i) {
+	return `
+		<div>
+			<label for="date${i}">Date:</label>
+			<input name="date" type="date" id="date${i}">
+			<label for="time${i}">Time:</label>
+			<input name="time" type="time" id="time${i}">
 
+			<label for="completed${i}">Completed:</label>
+			<input type="checkbox" name="completed" id="completed${i}">
+		</div>
+	`;
+}
