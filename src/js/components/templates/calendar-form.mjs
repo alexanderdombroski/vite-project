@@ -9,7 +9,7 @@ export function eventFormTemplate(data = {type: "event"}) {
 			<legend>${capitalize(type)} Information</legend>
 
 			<label for="title">Title:</label>
-			<input name="title" id="title" type="text" placeholder="work">
+			<input name="title" id="title" type="text">
 
 			<label for="desc">Description:</label>
 			<textarea name="desc" id="desc" type="text"></textarea>           
@@ -26,19 +26,18 @@ export function eventFormTemplate(data = {type: "event"}) {
 			<input name="endTime" id="endTime" type="time">
 			
 			<label for="completed">Completed:</label>
-			<input type="checkbox" name="completed">
+			<input type="checkbox" name="completed" id="completed">
 
 		</fieldset>
 
 		<fieldset>
 			<legend>Advanced</legend>
 
-			<label for="recurring">Recurring: </label>
-			<input type="date">
+			<label for="recur">Recurring: </label>
+			<input type="text" name="recur" id="recur">
 			
-			
-			<label for="recurring"> - until - </label>
-			<input type="date">
+			<label for="recur-until"> - until - </label>
+			<input type="date" name="recur-until" id="recur-until">
 
 		</fieldset>
 
@@ -53,20 +52,20 @@ export function eventFormTemplate(data = {type: "event"}) {
 
 		</fieldset>
 
-		<button type="submit">Add ${type}</button>
+		<button type="submit" id="form-submit-btn">Add ${type}</button>
 	`;
 }
 
 export function subeventTemplate(i) {
 	return `
 		<div>
-			<label for="date${i}">Date:</label>
-			<input name="date" type="date" id="date${i}">
-			<label for="time${i}">Time:</label>
-			<input name="time" type="time" id="time${i}">
+			<label for="sub-date-${i}">Date:</label>
+			<input name="sub-date" type="date" id="sub-date-${i}">
+			<label for="sub-time-${i}">Time:</label>
+			<input name="sub-time" type="time" id="sub-time-${i}">
 
-			<label for="completed${i}">Completed:</label>
-			<input type="checkbox" name="completed" id="completed${i}">
+			<label for="sub-completed-${i}">Completed:</label>
+			<input type="checkbox" name="sub-completed" id="sub-completed-${i}">
 		</div>
 	`;
 }

@@ -3,6 +3,7 @@ import { getCalendarStart, getMonthName, getMonthEnd, getPrevMonthEnd, getMonthS
 import { dayTemplate } from "./templates/templates.mjs";
 import { getHolidays } from "../api/holiday.mjs";
 import { eventFormTemplate, subeventTemplate} from "./templates/calendar-form.mjs";
+import { events } from "./event-manager.mjs";
 
 // ---------------------- Calendar ----------------------
 
@@ -37,6 +38,10 @@ function loadCalendar(date = new Date()) {
     calendar.innerHTML += [...Array((7 - (monthStartWeekdayNum + monthEnd) % 7) % 7).keys()].map(getDayTemplate).join('');
 }
 
+export function loadEvents() {
+    document.getElementById("calendarevents").innerHTML = events.map(event => `<li>${event.title}</li>`).join("")
+}
+
 // ---------------------- Event-Forum ----------------------
 
 let subevents;
@@ -49,7 +54,7 @@ function loadEventForm() {
 }
 
 function addSub() {
-    document.getElementById("subevents").innerHTML += subeventTemplate(++subevents)
+    document.getElementById("subevents").innerHTML += subeventTemplate(subevents++)
 }
 
 function removeSub() {
