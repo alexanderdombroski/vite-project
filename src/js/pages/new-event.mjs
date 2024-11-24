@@ -8,4 +8,3 @@ import { addFormSubmitListener } from "../components/event-manager.mjs";
     addFormSubmitListener();
 })();
 
-

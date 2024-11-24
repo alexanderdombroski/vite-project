@@ -3,7 +3,6 @@ const events = [];
 
 (function fillEvents() {
     const data = localStorage.getItem("events");
-    console.log(data)
     if (data) {
       JSON.parse(data).forEach(item => events.push(item));
     }
@@ -20,13 +19,13 @@ function submitEventForm(event) {
     const calendarObject = {subevents: []};
     formData.forEach((value, key) => {
         if (key.startsWith("sub-")) {
-          const [_, field, index] = key.split("-");
-          if (!calendarObject.subevents[index]) calendarObject.subevents[index] = {};
-          calendarObject.subevents[index][field] = value;
+            const [_, field, index] = key.split("-");
+            if (!calendarObject.subevents[index]) calendarObject.subevents[index] = {};
+            calendarObject.subevents[index][field] = value;
         } else {
-          calendarObject[key] = value;
+            calendarObject[key] = value;
         }
-      });
+    });
 
     events.push(calendarObject)
 

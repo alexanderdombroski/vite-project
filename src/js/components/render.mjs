@@ -4,6 +4,8 @@ import { dayTemplate } from "./templates/templates.mjs";
 import { getHolidays } from "../api/holiday.mjs";
 import { eventFormTemplate, subeventTemplate} from "./templates/calendar-form.mjs";
 import { events } from "./event-manager.mjs";
+import { getURLParameter } from "../utils/urlParams.js";
+
 
 // ---------------------- Calendar ----------------------
 
@@ -23,7 +25,7 @@ function loadCalendar(date = new Date()) {
 
     for (let i = prevMonthEnd - monthStartWeekdayNum + 1; i <= prevMonthEnd; i++) {
         calendar.innerHTML += dayTemplate(i, getHolidays(pointer));
-        nextDay()
+        nextDay();
     }
     
     const monthEnd = getMonthEnd(date);
@@ -39,7 +41,7 @@ function loadCalendar(date = new Date()) {
 }
 
 export function loadEvents() {
-    document.getElementById("calendarevents").innerHTML = events.map(event => `<li>${event.title}</li>`).join("")
+    document.getElementById("calendarevents").innerHTML = events.map(event => `<li>${event.title}</li>`).join("");
 }
 
 // ---------------------- Event-Forum ----------------------
@@ -48,7 +50,7 @@ let subevents;
 
 function loadEventForm() {
     subevents = 0;
-    document.getElementById("event-form").innerHTML = eventFormTemplate();
+    document.getElementById("event-form").innerHTML = eventFormTemplate({type: getURLParameter("type", "event")});
     document.getElementById("add-sub").addEventListener("click", addSub);
     document.getElementById("remove-sub").addEventListener("click", removeSub);
 }
