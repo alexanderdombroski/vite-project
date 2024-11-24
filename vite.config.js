@@ -12,7 +12,7 @@ export default defineConfig({
       input: {
         main: 'src/index.html', 
         calendar: 'src/calendar.html',
-        events: 'src/new-event.hmtl'
+        events: 'src/new-event.html'
       }
     }
   },
