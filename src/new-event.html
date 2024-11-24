@@ -5,33 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Calendar Item</title>
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/pages/new-event.mjs" defer></script>
+    <script type="module" src="./js/pages/new-event.mjs" defer></script>
 </head>
 <body>
-    <header>
-        <a id="logo-link" href="./index.html">
-          <img id="logo" src="./images/chronoplan_logo.png" alt="ChronoPlan Logo">
-        </a>
-        <nav>
-          <h1>ChronoPlan</h1>
-          <ul>
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./calendar.html">Planner</a></li>
-          </ul>
-        </nav>
-      </header>
+  <header id="global-header">
+    <div id="global-header-left">
+      <a id="logo-link" href="./index.html">
+        <img id="logo" src="./images/chronoplan_logo.png" alt="ChronoPlan Logo">
+      </a>
+      <h1 id="header-title">ChronoPlan</h1>
+    </div>
+    <div id="global-header-right">
+      <h2 id="main-menu-button">Menu</h2>
+    </div>
+    <nav class="header-drop-down">
+      <div id="main-menu">
+        <ul id="main-menu-list">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./calendar.html">Planner</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
       <main>
         
-        <h1>Hi</h1>
-        <h1>Hi</h1>
-        <form>
-          <fieldset>
-            <legend>New Event</legend>
-          </fieldset>
 
-
-
-          <button type="submit">submit</button>
+        <form id="event-form">
+          <!-- Form loads dynamically -->
         </form>
 
 

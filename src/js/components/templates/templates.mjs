@@ -31,8 +31,4 @@ export function countryFormTemplate(data){
     `
 };
 
-export function eventFormTemplate(data) {
-    return `
-        
-    `
-}
+

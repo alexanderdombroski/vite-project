@@ -1,5 +1,5 @@
 import { getCountryList } from "../api/holiday.mjs";
-import { countryFormTemplate } from "../components/templates.mjs";
+import { countryFormTemplate } from "../components/templates/templates.mjs";
 import { mainMenuToggle } from "../components/menu-handler.js";
 import p1 from '../../images/planner1.webp'
 import p2 from '../../images/planner2.avif'

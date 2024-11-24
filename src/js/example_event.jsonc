@@ -2,11 +2,12 @@
 // List of goals/events
 [
   {
-    "type": "",
+    "type": "", // Goal or Event
     "title": "",
     "desc": "", // Optional
-    "startDateTime": "",
-    "endDateTime": "",
+    "date": "",
+    "startTime": "",
+    "endTime": "",
     "completed": true, // Completing a goal will render all subevernts as commpleted, but will not make them completed
     "recurring": {
         "days": "MTThF",

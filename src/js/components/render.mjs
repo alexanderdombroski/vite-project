@@ -1,7 +1,8 @@
 // Add templates to the page
 import { getCalendarStart, getMonthName, getMonthEnd, getPrevMonthEnd, getMonthStart } from '../utils/timereader.mjs';
-import { dayTemplate } from "./templates.mjs";
+import { dayTemplate } from "./templates/templates.mjs";
 import { getHolidays } from "../api/holiday.mjs";
+import { eventFormTemplate } from "./templates/calendar-form.mjs";
 
 // ---------------------- Calendar ----------------------
 
@@ -36,4 +37,8 @@ function loadCalendar(date = new Date()) {
     calendar.innerHTML += [...Array((7 - (monthStartWeekdayNum + monthEnd) % 7) % 7).keys()].map(getDayTemplate).join('');
 }
 
-export { loadCalendar }
+function loadEventForm() {
+    document.getElementById("event-form").innerHTML = eventFormTemplate();
+}
+
+export { loadCalendar, loadEventForm }
