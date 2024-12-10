@@ -50,13 +50,14 @@ let subevents;
 
 function loadEventForm() {
     subevents = 0;
-    document.getElementById("event-form").innerHTML = eventFormTemplate({type: getURLParameter("type", "event")});
-    document.getElementById("add-sub").addEventListener("click", addSub);
+    const type = getURLParameter("type", "event");
+    document.getElementById("event-form").innerHTML = eventFormTemplate({type: type});
+    document.getElementById("add-sub").addEventListener("click", () => addSub(type === "goal"));
     document.getElementById("remove-sub").addEventListener("click", removeSub);
 }
 
-function addSub() {
-    document.getElementById("subevents").innerHTML += subeventTemplate(subevents++)
+function addSub(type) {
+    document.getElementById("subevents").innerHTML += subeventTemplate(subevents++, type)
 }
 
 function removeSub() {

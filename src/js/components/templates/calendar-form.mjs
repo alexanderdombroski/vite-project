@@ -25,8 +25,12 @@ export function eventFormTemplate(data = {type: "event"}) {
 			<label for="endTime"> - to - </label>
 			<input name="endTime" id="endTime" type="time">
 			
+			${
+			type === "goal" ? `
 			<label for="completed">Completed:</label>
 			<input type="checkbox" name="completed" id="completed">
+			` : ""
+			}
 
 		</fieldset>
 
@@ -56,7 +60,7 @@ export function eventFormTemplate(data = {type: "event"}) {
 	`;
 }
 
-export function subeventTemplate(i) {
+export function subeventTemplate(i, includeCompleted) {
 	return `
 		<div>
 			<label for="sub-date-${i}">Date:</label>
@@ -64,8 +68,12 @@ export function subeventTemplate(i) {
 			<label for="sub-time-${i}">Time:</label>
 			<input name="sub-time" type="time" id="sub-time-${i}">
 
+			${
+			includeCompleted ? `
 			<label for="sub-completed-${i}">Completed:</label>
 			<input type="checkbox" name="sub-completed" id="sub-completed-${i}">
+			` : ""
+			}
 		</div>
 	`;
 }
