@@ -63,6 +63,8 @@ export function eventFormTemplate(data = {type: "event"}) {
 export function subeventTemplate(i, includeCompleted) {
 	return `
 		<div>
+			<label for="sub-title-${i}">Title:</label>
+			<input name="sub-title" type="text" id="sub-title-${i}">
 			<label for="sub-date-${i}">Date:</label>
 			<input name="sub-date" type="date" id="sub-date-${i}">
 			<label for="sub-time-${i}">Time:</label>
