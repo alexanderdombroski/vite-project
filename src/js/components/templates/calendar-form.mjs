@@ -12,7 +12,7 @@ export function eventFormTemplate(data = {type: "event"}) {
 			<input name="title" id="title" type="text">
 
 			<label for="desc">Description:</label>
-			<textarea name="desc" id="desc" type="text"></textarea>           
+			<input name="desc" id="desc" type="text"></input>           
 
 		</fieldset>
 

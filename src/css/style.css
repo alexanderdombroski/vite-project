@@ -298,7 +298,18 @@ footer {
 /* ------------------------ Event Adder ------------------------ */
 
 #event-form {
+  justify-self: center;
+  align-self: center;
   margin: 150px 20px;
+  width: 50%;
+  background-color: white;
+  border: 2px solid #004265;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#event-form fieldset {
+  margin: 10px;
 }
 
 /* ------------------------ Media Queries ------------------------ */
