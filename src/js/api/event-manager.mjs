@@ -27,7 +27,7 @@ function submitEventForm(event) {
         }
     });
 
-    events.push(calendarObject)
+    events.push(calendarObject);
 
     localStorage.setItem("events", JSON.stringify(events));
 
