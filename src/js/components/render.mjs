@@ -1,11 +1,16 @@
 // Add templates to the page
 import { getCalendarStart, getMonthName, getMonthEnd, getPrevMonthEnd, getMonthStart, getWeekStart } from '../utils/timereader.mjs';
-import { dayTemplate } from "./templates/templates.mjs";
+import { dayTemplate, footerTemplate, headerTemplate } from "./templates/templates.mjs";
 import { getHolidays } from "../api/holiday.mjs";
 import { eventFormTemplate, subeventTemplate} from "./templates/calendar-form.mjs";
 import { events } from "../api/event-manager.mjs";
 import { getURLParameter } from "../utils/urlParams.js";
 
+
+export function renderHeaderFooter() {
+    document.querySelector("header").insertAdjacentHTML('afterbegin', headerTemplate());
+    document.querySelector("footer").insertAdjacentHTML('afterbegin', footerTemplate());
+}
 
 // ---------------------- Calendar ----------------------
 
