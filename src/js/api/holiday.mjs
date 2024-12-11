@@ -13,7 +13,6 @@ async function loadHolidays() {
     }
     
     data.forEach(h => addHoliday(h));
-    console.log(holidays)
 };
 
 async function fetchHolidays() {
