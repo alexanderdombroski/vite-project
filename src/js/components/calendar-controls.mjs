@@ -42,6 +42,7 @@ function switchView() {
     } else {
         updateView("monthly", monthlyViewButton);
     }
+    document.getElementById("calendar-container").setAttribute("data-view", currentView);
 }
 
 export { initCalendarNavigation }
