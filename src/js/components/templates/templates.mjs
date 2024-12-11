@@ -1,3 +1,5 @@
+import githubLogo from "../../../assets/github-logo.svg?raw";
+
 // Format Templates
 
 export function dayTemplate(dayNumber, holidays, events = []) {
@@ -37,7 +39,8 @@ export function footerTemplate() {
   return `
     <p>&copy; 2024 ChronoPlan. All rights reserved.</p>
     <a href="https://github.com/alexanderdombroski/vite-project">
-      <img id="github-logo" src="./assets/github-logo.svg" alt="github code">
+        
+        ${githubLogo}
     </a>
   `;
 }
