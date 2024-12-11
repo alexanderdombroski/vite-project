@@ -1,5 +1,5 @@
 // Add templates to the page
-import { getCalendarStart, getMonthName, getMonthEnd, getPrevMonthEnd, getMonthStart } from '../utils/timereader.mjs';
+import { getCalendarStart, getMonthName, getMonthEnd, getPrevMonthEnd, getMonthStart, getWeekStart } from '../utils/timereader.mjs';
 import { dayTemplate } from "./templates/templates.mjs";
 import { getHolidays } from "../api/holiday.mjs";
 import { eventFormTemplate, subeventTemplate} from "./templates/calendar-form.mjs";
@@ -13,26 +13,16 @@ export function setViewSwitchSvg(template) {
     document.getElementById("view-switcher").innerHTML = template();
 }
 
-function loadCalendar(date = new Date()) {
+function loadCalendar(date = new Date(), view = "monthly") {
     // Load Calendar Title
     const title = `${getMonthName(date)} - ${date.getFullYear()}`;
     document.getElementById("calendar-title").innerText = title;
 
     const calendar = document.getElementById('calendar');
-
-    const monthStartWeekdayNum = getMonthStart(date);
-    const pointer = getCalendarStart(date)
-    const nextDay = () => pointer.setDate(pointer.getDate() + 1);
-    const prevMonthEnd = getPrevMonthEnd(date);
-    
     calendar.innerHTML = "";
 
-    for (let i = prevMonthEnd - monthStartWeekdayNum + 1; i <= prevMonthEnd; i++) {
-        calendar.innerHTML += dayTemplate(i, getHolidays(pointer));
-        nextDay();
-    }
-    
-    const monthEnd = getMonthEnd(date);
+    let pointer;
+    const nextDay = () => pointer.setDate(pointer.getDate() + 1);
 
     function getDayTemplate(i) {
         const template = dayTemplate(i+1, getHolidays(pointer));
@@ -40,8 +30,31 @@ function loadCalendar(date = new Date()) {
         return template
     }
 
-    calendar.innerHTML += [...Array(monthEnd).keys()].map(getDayTemplate).join('');
-    calendar.innerHTML += [...Array((7 - (monthStartWeekdayNum + monthEnd) % 7) % 7).keys()].map(getDayTemplate).join('');
+    if (view === "monthly") {
+        const monthStartWeekdayNum = getMonthStart(date);
+        pointer = getCalendarStart(date)
+        const prevMonthEnd = getPrevMonthEnd(date);
+
+        for (let i = prevMonthEnd - monthStartWeekdayNum + 1; i <= prevMonthEnd; i++) {
+            calendar.innerHTML += dayTemplate(i, getHolidays(pointer));
+            nextDay();
+        }
+        
+        const monthEnd = getMonthEnd(date);
+    
+        calendar.innerHTML += [...Array(monthEnd).keys()].map(getDayTemplate).join('');
+        calendar.innerHTML += [...Array((7 - (monthStartWeekdayNum + monthEnd) % 7) % 7).keys()].map(getDayTemplate).join('');
+    } else if (view === "weekly") {
+        pointer = getWeekStart(date);
+        const end =  pointer.getDate() + 7
+        for (let i = pointer.getDate(); i < end; i++) {
+            calendar.innerHTML += dayTemplate(i, getHolidays(pointer));
+            nextDay();
+        }
+    }
+    
+    
+
 }
 
 export function loadEvents() {
