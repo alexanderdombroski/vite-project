@@ -1,13 +1,18 @@
-import { loadCalendar, loadEvents } from "../components/render.mjs";
+import { loadCalendar, loadEvents, setViewSwitchSvg } from "../components/render.mjs";
 import { initCalendarNavigation } from "../components/calendar-controls.mjs";
 import { loadHolidays } from  "../api/holiday.mjs"
 import { mainMenuToggle } from "../components/menu-handler.js";
+import { monthlyViewButton } from "../components/templates/view-switcher.mjs.mjs";
 
 (async function loadPage() {
-    await loadHolidays()
+    await loadHolidays();
     loadCalendar();
     loadEvents();
-    mainMenuToggle();
-    initCalendarNavigation()
+    setViewSwitchSvg(monthlyViewButton);
 })();
 
+
+(function initListeners() {
+    mainMenuToggle();
+    initCalendarNavigation();
+})();

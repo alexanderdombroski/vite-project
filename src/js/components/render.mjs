@@ -9,6 +9,10 @@ import { getURLParameter } from "../utils/urlParams.js";
 
 // ---------------------- Calendar ----------------------
 
+export function setViewSwitchSvg(template) {
+    document.getElementById("view-switcher").innerHTML = template();
+}
+
 function loadCalendar(date = new Date()) {
     // Load Calendar Title
     const title = `${getMonthName(date)} - ${date.getFullYear()}`;
