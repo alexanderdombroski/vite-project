@@ -3,8 +3,9 @@ import { getCalendarStart, getMonthName, getMonthEnd, getPrevMonthEnd, getMonthS
 import { dayTemplate, footerTemplate, headerTemplate } from "./templates/templates.mjs";
 import { getHolidays } from "../api/holiday.mjs";
 import { eventFormTemplate, subeventTemplate} from "./templates/calendar-form.mjs";
-import { events } from "../api/event-manager.mjs";
+// import { events } from "../api/event-manager.mjs";
 import { getURLParameter } from "../utils/urlParams.js";
+import { getEvents } from "../api/event-manager.mjs";
 
 
 export function renderHeaderFooter() {
@@ -30,7 +31,7 @@ function loadCalendar(date = new Date(), view = "monthly") {
     const nextDay = () => pointer.setDate(pointer.getDate() + 1);
 
     function getDayTemplate(i) {
-        const template = dayTemplate(i+1, getHolidays(pointer));
+        const template = dayTemplate(i+1, getHolidays(pointer), getEvents(pointer));
         nextDay()
         return template
     }
@@ -41,7 +42,7 @@ function loadCalendar(date = new Date(), view = "monthly") {
         const prevMonthEnd = getPrevMonthEnd(date);
 
         for (let i = prevMonthEnd - monthStartWeekdayNum + 1; i <= prevMonthEnd; i++) {
-            calendar.innerHTML += dayTemplate(i, getHolidays(pointer));
+            calendar.innerHTML += dayTemplate(i, getHolidays(pointer), getEvents(pointer));
             nextDay();
         }
         
@@ -53,7 +54,7 @@ function loadCalendar(date = new Date(), view = "monthly") {
         pointer = getWeekStart(date);
         const end =  pointer.getDate() + 7
         for (let i = pointer.getDate(); i < end; i++) {
-            calendar.innerHTML += dayTemplate(i, getHolidays(pointer));
+            calendar.innerHTML += dayTemplate(i, getHolidays(pointer), getEvents(pointer));
             nextDay();
         }
     }
@@ -62,9 +63,7 @@ function loadCalendar(date = new Date(), view = "monthly") {
 
 }
 
-export function loadEvents() {
-    document.getElementById("calendarevents").innerHTML = events.map(event => `<li>${event.title}</li>`).join("");
-}
+
 
 // ---------------------- Event-Forum ----------------------
 

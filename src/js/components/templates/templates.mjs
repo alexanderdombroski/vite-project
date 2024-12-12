@@ -14,7 +14,7 @@ export function dayTemplate(dayNumber, holidays, events = []) {
 
 function eventTemplate(event) {
     return `
-        <p>${event.name}</p>
+        <p>${event.title}</p>
     `;
 }
 function holidayTemplate(holiday) {

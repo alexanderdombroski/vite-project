@@ -1,12 +1,19 @@
+import { defaultYear } from "../utils/timereader.mjs";
+import { dateToISOString } from "../utils/timereader.mjs";
 
-const events = [];
+let events = {};
+const recurringEvents = [];
 
-(function fillEvents() {
-    const data = localStorage.getItem("events");
+// ----------------- From Storage -----------------
+
+function readEventsFromStorage(year = new Date().getFullYear()) {
+    const data = localStorage.getItem(`events-${year}`);
     if (data) {
-      JSON.parse(data).forEach(item => events.push(item));
+      events = JSON.parse(data);
     }
-})();
+};
+
+// ----------------- Form Handling -----------------
 
 function addFormSubmitListener() {
     document.getElementById('event-form').addEventListener('submit', submitEventForm);
@@ -14,6 +21,8 @@ function addFormSubmitListener() {
 
 function submitEventForm(event) {
     event.preventDefault();
+    
+    // Handle Form Data
     const formData = new FormData(event.target);
 
     const calendarObject = {subevents: []};
@@ -27,11 +36,28 @@ function submitEventForm(event) {
         }
     });
 
-    events.push(calendarObject);
+    // Store Data
 
-    localStorage.setItem("events", JSON.stringify(events));
+    const year = calendarObject.date.slice(0,4);
+    readEventsFromStorage(year)
 
+    addEvent(calendarObject);
+
+    localStorage.setItem(`events-${year}`, JSON.stringify(events));
+    
     globalThis.location.href = 'calendar.html';
+    console.log(events)
 }
 
-export { events, addFormSubmitListener };
+// ----------------- Event Interaction -----------------
+
+function getEvents(date = new Date()) {
+    return (events[dateToISOString(defaultYear(date))] ?? []).concat([]);
+}
+
+function addEvent(event) {
+    if (!(event.date in events)) events[event.date] = [];
+    events[event.date].push(event);
+}
+
+export { getEvents, addFormSubmitListener, readEventsFromStorage };
