@@ -1,7 +1,7 @@
 import { capitalize } from "../../utils/str.mjs";
 
-export function eventFormTemplate(data = {type: "event"}) {
-	const { type, title, desc, startDateTime, endDateTime, completed, recurring, subevents } = data;
+export function eventFormTemplate(data = {type: "event", date: ""}) {
+	const { type, date, title, desc, startTime, endTime, completed, recurring, subevents } = data;
 	
 	return `
 		<h2>New ${capitalize(type)}</h2>
@@ -19,7 +19,7 @@ export function eventFormTemplate(data = {type: "event"}) {
 		<fieldset>
 			<legend>Date & Time</legend>
 			<label for="date">Date:</label>
-			<input name="date" id="date" type="date">
+			<input name="date" id="date" type="date" value="${date}">
 			<label for="startTime">Time:</label>
 			<input name="startTime" id="startTime" type="time">
 			<label for="endTime"> - to - </label>

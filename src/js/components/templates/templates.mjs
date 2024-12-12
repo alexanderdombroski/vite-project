@@ -1,37 +1,52 @@
 import githubLogo from "../../../assets/github-logo.svg?raw";
+import { getEvents } from "../../api/event-manager.mjs";
+import { getHolidays } from "../../api/holiday.mjs";
+import { dateToISOString } from "../../utils/timereader.mjs";
 
 // Format Templates
 
-export function dayTemplate(dayNumber, holidays, events = []) {
-    return `
-    <div class="day">
-        <span>${dayNumber}</span>
-        ${holidays.map(e => holidayTemplate(e)).join("")}
-        ${events.map(e => eventTemplate(e)).join("")}
+export function dayTemplate(dayNumber, date) {
+  return `
+    <div class="day" data-date="${dateToISOString(date)}}">
+      <span>${dayNumber}</span>
+      <button data-date="${dateToISOString(date)}" data-type="event">+</button>
+      <button data-date="${dateToISOString(date)}" data-type="goal">+</button>
+      ${getHolidays(date)
+        .map((e) => holidayTemplate(e))
+        .join("")}
+      ${getEvents(date)
+        .map((e) => eventTemplate(e))
+        .join("")}
     </div>
-    `;
-};
+  `;
+}
+
 
 function eventTemplate(event) {
-    return `
-        <p>${event.title}</p>
-    `;
+  return `
+    <p>${event.title}</p>
+  `;
 }
 function holidayTemplate(holiday) {
-    return `
-        <p>${holiday}</p>
-    `;
+  return `
+    <p>${holiday}</p>
+  `;
 }
 
-export function countryFormTemplate(data){
-    return `
+export function countryFormTemplate(data) {
+  return `
     <select id="country-select">
-        <option value="">Select a country</option>
-        ${data.map(country => `<option value="${country.countryCode}">${country.name}</option>`).join('')}
+      <option value="">Select a country</option>
+      ${data
+        .map(
+          (country) =>
+            `<option value="${country.countryCode}">${country.name}</option>`
+        )
+        .join("")}
     </select>
     <button id="country-submit">Submit</button>
-    `;
-};
+  `;
+}
 
 // -------------------- Header Footer --------------------
 
@@ -39,8 +54,7 @@ export function footerTemplate() {
   return `
     <p>&copy; 2024 ChronoPlan. All rights reserved.</p>
     <a href="https://github.com/alexanderdombroski/vite-project">
-        
-        ${githubLogo}
+      ${githubLogo}
     </a>
   `;
 }

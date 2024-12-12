@@ -283,9 +283,37 @@ footer svg:hover {
   margin: 0;
 }
 
+/* ----- Calendar Body ----- */
+
 .day {
   position: relative;
   width: 100%;
+}
+
+.day button {
+  position: absolute;
+  right: 10px;
+  display: none;
+  overflow: hidden;
+  width: 20px;
+  white-space: nowrap;
+  background-color: var(--accent-color);
+  border: none;
+}
+
+.day button:nth-of-type(1) { top: 5px }
+.day button:nth-of-type(2) { top: 30px }
+.day button:nth-of-type(1):hover::after { content: "Event"; }
+.day button:nth-of-type(2):hover::after { content: "Goal"; }
+
+.day:hover button {
+  display: block;
+}
+
+@keyframes expand { from { width: 20px } to { width: 60px; } }
+.day button:hover {
+  animation: expand 0.1s ease-in-out forwards;
+  animation-iteration-count: 1;
 }
 
 #calendar-container[data-view="monthly"] .day {
@@ -301,6 +329,10 @@ footer svg:hover {
   left: 2px;
   top: 2px;
 }
+
+
+
+/* ----- Calendar Instructions ----- */
 
 #calendar-instructions {
   background-color: white;

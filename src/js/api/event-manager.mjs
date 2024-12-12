@@ -39,14 +39,13 @@ function submitEventForm(event) {
     // Store Data
 
     const year = calendarObject.date.slice(0,4);
-    readEventsFromStorage(year)
+    readEventsFromStorage(year);
 
     addEvent(calendarObject);
 
     localStorage.setItem(`events-${year}`, JSON.stringify(events));
     
     globalThis.location.href = 'calendar.html';
-    console.log(events)
 }
 
 // ----------------- Event Interaction -----------------

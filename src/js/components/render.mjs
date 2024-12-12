@@ -1,11 +1,8 @@
 // Add templates to the page
 import { getCalendarStart, getMonthName, getMonthEnd, getPrevMonthEnd, getMonthStart, getWeekStart } from '../utils/timereader.mjs';
 import { dayTemplate, footerTemplate, headerTemplate } from "./templates/templates.mjs";
-import { getHolidays } from "../api/holiday.mjs";
 import { eventFormTemplate, subeventTemplate} from "./templates/calendar-form.mjs";
-// import { events } from "../api/event-manager.mjs";
 import { getURLParameter } from "../utils/urlParams.js";
-import { getEvents } from "../api/event-manager.mjs";
 
 
 export function renderHeaderFooter() {
@@ -31,7 +28,7 @@ function loadCalendar(date = new Date(), view = "monthly") {
     const nextDay = () => pointer.setDate(pointer.getDate() + 1);
 
     function getDayTemplate(i) {
-        const template = dayTemplate(i+1, getHolidays(pointer), getEvents(pointer));
+        const template = dayTemplate(i+1, pointer);
         nextDay()
         return template
     }
@@ -42,7 +39,7 @@ function loadCalendar(date = new Date(), view = "monthly") {
         const prevMonthEnd = getPrevMonthEnd(date);
 
         for (let i = prevMonthEnd - monthStartWeekdayNum + 1; i <= prevMonthEnd; i++) {
-            calendar.innerHTML += dayTemplate(i, getHolidays(pointer), getEvents(pointer));
+            calendar.innerHTML += dayTemplate(i, pointer);
             nextDay();
         }
         
@@ -54,7 +51,7 @@ function loadCalendar(date = new Date(), view = "monthly") {
         pointer = getWeekStart(date);
         const end =  pointer.getDate() + 7
         for (let i = pointer.getDate(); i < end; i++) {
-            calendar.innerHTML += dayTemplate(i, getHolidays(pointer), getEvents(pointer));
+            calendar.innerHTML += dayTemplate(i, pointer);
             nextDay();
         }
     }
@@ -72,7 +69,8 @@ let subevents;
 function loadEventForm() {
     subevents = 0;
     const type = getURLParameter("type", "event");
-    document.getElementById("event-form").innerHTML = eventFormTemplate({type: type});
+    const date = getURLParameter("date", "");
+    document.getElementById("event-form").innerHTML = eventFormTemplate({type: type, date: date});
     document.getElementById("add-sub").addEventListener("click", () => addSub(type === "goal"));
     document.getElementById("remove-sub").addEventListener("click", removeSub);
 }

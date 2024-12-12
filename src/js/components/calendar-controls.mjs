@@ -10,6 +10,7 @@ function initCalendarNavigation() {
     calendar.querySelector(".prev").addEventListener('click', loadPrev);
     calendar.querySelector(".next").addEventListener('click', loadNext);
     calendar.querySelector("#view-switcher").addEventListener('click', switchView);
+    calendar.querySelector("#calendar").addEventListener('click', addCalendarItem)
 }
 
 function loadPrev() {
@@ -44,5 +45,11 @@ function switchView() {
     }
     document.getElementById("calendar-container").setAttribute("data-view", currentView);
 }
+
+function addCalendarItem(event) {
+    if (event.target.tagName !== 'BUTTON') return;
+    globalThis.location.href = `new-event.html?date=${event.target.dataset.date}&type=${event.target.dataset.type}`;
+}
+
 
 export { initCalendarNavigation }
