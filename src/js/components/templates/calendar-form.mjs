@@ -12,18 +12,19 @@ export function eventFormTemplate(data = {type: "event", date: ""}) {
 			<input name="title" id="title" type="text" maxlength="20" required>
 
 			<label for="desc">Description:</label>
-			<input name="desc" id="desc" type="text" maxlength="100" required></input>           
+			<input name="desc" id="desc" type="text" maxlength="100"></input>           
 
 		</fieldset>
 
 		<fieldset>
 			<legend>Date & Time</legend>
 			<label for="date">Date:</label>
-			<input name="date" id="date" type="date" required>
+			<input name="date" id="date" type="date" value="${date}" required>
+			<br>
 			<label for="startTime">Time:</label>
-			<input name="startTime" id="startTime" type="time" required>
+			<input name="startTime" id="startTime" type="time">
 			<label for="endTime"> - to - </label>
-			<input name="endTime" id="endTime" type="time" required>
+			<input name="endTime" id="endTime" type="time">
 			<span id="time-error"></span>
 			
 			${
@@ -58,7 +59,7 @@ export function subeventTemplate(i, includeCompleted) {
 			<label for="sub-date-${i}">Date:</label>
 			<input name="sub-date" type="date" id="sub-date-${i}" required>
 			<label for="sub-time-${i}">Time:</label>
-			<input name="sub-time" type="time" id="sub-time-${i}" required>
+			<input name="sub-time" type="time" id="sub-time-${i}">
 			<span id="sub-date-error"></span>
 
 			${

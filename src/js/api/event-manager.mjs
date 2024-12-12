@@ -1,4 +1,3 @@
-import { defaultYear } from "../utils/timereader.mjs";
 import { dateToISOString } from "../utils/timereader.mjs";
 
 let events = {};
@@ -38,29 +37,19 @@ function validateEventForm() {
         return false;
     }
 
-    if (!startTime) {
-        errorSpan.innerText = "Start time is required";
-        return false;
-    }
-
-    if (!endTime) {
-        errorSpan.innerText = "End time is required";
-        return false;
-    }
-
     if (isPastDate(date)) {
         errorSpan.innerText = "Date must be in the future";
         return false;
     }
 
-    if (startTime >= endTime) {
+    if (startTime > endTime) {
         errorSpan.innerText = "End time must be after start time";
         return false;
     }
 
     if (subDate) {
 
-        subdate = subDate.value;
+        subdate = subDate.value; // What are these two lines supposed to be doing?
         subtime = subTime.value;
 
         if (isPastDate(subDate)) {
