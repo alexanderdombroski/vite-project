@@ -1,6 +1,7 @@
-import { loadCalendar, setViewSwitchSvg } from "./render.mjs";
-import { getNextMonth, getNextWeek, getPrevMonth, getPrevWeek, getPrevDay, getNextDay } from "../utils/timereader.mjs";
+import { loadCalendar, setViewSwitchSvg, showEventDetails } from "./render.mjs";
+import { getNextMonth, getNextWeek, getPrevMonth, getPrevWeek, getPrevDay, getNextDay, getDateFromString } from "../utils/timereader.mjs";
 import { dailyViewButton, monthlyViewButton, weeklyViewButton } from "./templates/view-switcher.mjs.mjs";
+import { getEvents } from "../api/event-manager.mjs";
 
 let selectedDate = new Date();
 let currentView = "monthly";
@@ -47,9 +48,26 @@ function switchView() {
 }
 
 function addCalendarItem(event) {
-    if (event.target.tagName !== 'BUTTON') return;
-    globalThis.location.href = `new-event.html?date=${event.target.parentElement.dataset.date}&type=${event.target.dataset.type}`;
+    if (event.target.tagName === 'BUTTON') {
+        globalThis.location.href = `new-event.html?date=${event.target.parentElement.dataset.date}&type=${event.target.dataset.type}`;
+    } else if (event.target.tagName === 'P') {
+        const date = event.target.parentElement.dataset.date;
+        const title = event.target.innerText;
+        
+        const data = getEvents(getDateFromString(date)).find(
+            item => item.title === title && 
+            item.date === date && 
+            item.startTime === (event.target.dataset.starttime) &&
+            item.endTime === (event.target.dataset.endtime ?? "")
+        ) ?? {
+            title: title,
+            date: date,
+            type: event.target.dataset.type
+        };
+        showEventDetails(data);
+    }
 }
+
 
 
 export { initCalendarNavigation }

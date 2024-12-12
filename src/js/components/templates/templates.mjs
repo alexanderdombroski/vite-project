@@ -3,6 +3,7 @@ import { getEvents } from "../../api/event-manager.mjs";
 import { getHolidays } from "../../api/holiday.mjs";
 import { dateToISOString } from "../../utils/timereader.mjs";
 import p3 from "../../../images/chronoplan_logo.png";
+import { capitalize, toTitleCase } from "../../utils/str.mjs";
 
 // Format Templates
 
@@ -24,13 +25,31 @@ export function dayTemplate(dayNumber, date) {
 
 
 function eventTemplate(event) {
+  const { title, startTime, endTime, type } = event
   return `
-    <p>${event.title}</p>
+    <p data-type="${type}" data-starttime="${startTime}" data-endtime="${endTime}">${title}</p>
   `;
 }
 function holidayTemplate(holiday) {
   return `
-    <p>${holiday}</p>
+    <p data-type="holiday">${holiday}</p>
+  `;
+}
+
+export function eventDetailsModalTemplate(data) {
+  const { title, date, desc, startTime, endTime, type } = data;
+  return `
+    <article>
+      <h2>${toTitleCase(title)}</h2>
+      <p>${capitalize(type)}</p>
+      <p>${date}</p>
+      ${desc ? `<p>${desc}</p>` : ""}
+      ${
+        startTime && endTime ? `<p><span>${startTime}</span> - <span>${endTime}</span></p>` :
+        startTime ? `<p>${startTime}</p> ` :     
+        endTime ? `<p>${endTime}</p> ` : ""    
+      }
+    </article>
   `;
 }
 

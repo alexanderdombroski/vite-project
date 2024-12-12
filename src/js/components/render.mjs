@@ -1,6 +1,6 @@
 // Add templates to the page
 import { getCalendarStart, getMonthName, getMonthEnd, getPrevMonthEnd, getMonthStart, getWeekStart } from '../utils/timereader.mjs';
-import { dayTemplate, footerTemplate, headerTemplate } from "./templates/templates.mjs";
+import { dayTemplate, eventDetailsModalTemplate, footerTemplate, headerTemplate } from "./templates/templates.mjs";
 import { eventFormTemplate, subeventTemplate} from "./templates/calendar-form.mjs";
 import { getURLParameter } from "../utils/urlParams.js";
 
@@ -55,11 +55,18 @@ function loadCalendar(date = new Date(), view = "monthly") {
             nextDay();
         }
     }
-    
-    
-
 }
 
+
+function showEventDetails(data) {
+    const modal = document.getElementById("event-modal");
+    modal.innerHTML = eventDetailsModalTemplate(data);
+    const closeBtn = document.createElement("button")
+    closeBtn.addEventListener('click', (event) => event.currentTarget.parentElement.hidden = true);
+    closeBtn.innerText = "X";
+    modal.insertAdjacentElement("afterbegin", closeBtn);
+    modal.hidden = false;
+}
 
 
 // ---------------------- Event-Forum ----------------------
@@ -86,4 +93,4 @@ function removeSub() {
 }
 
 
-export { loadCalendar, loadEventForm }
+export { loadCalendar, loadEventForm, showEventDetails }
