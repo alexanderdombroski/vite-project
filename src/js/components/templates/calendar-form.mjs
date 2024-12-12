@@ -9,21 +9,21 @@ export function eventFormTemplate(data = {type: "event", date: ""}) {
 			<legend>${capitalize(type)} Information</legend>
 
 			<label for="title">Title:</label>
-			<input name="title" id="title" type="text">
+			<input name="title" id="title" type="text" maxlength="20" required>
 
 			<label for="desc">Description:</label>
-			<input name="desc" id="desc" type="text"></input>           
+			<input name="desc" id="desc" type="text" maxlength="100" required></input>           
 
 		</fieldset>
 
 		<fieldset>
 			<legend>Date & Time</legend>
 			<label for="date">Date:</label>
-			<input name="date" id="date" type="date" value="${date}">
+			<input name="date" id="date" type="date" required>
 			<label for="startTime">Time:</label>
-			<input name="startTime" id="startTime" type="time">
+			<input name="startTime" id="startTime" type="time" required>
 			<label for="endTime"> - to - </label>
-			<input name="endTime" id="endTime" type="time">
+			<input name="endTime" id="endTime" type="time" required>
 			
 			${
 			type === "goal" ? `
@@ -31,17 +31,6 @@ export function eventFormTemplate(data = {type: "event", date: ""}) {
 			<input type="checkbox" name="completed" id="completed">
 			` : ""
 			}
-
-		</fieldset>
-
-		<fieldset>
-			<legend>Advanced</legend>
-
-			<label for="recur">Recurring: </label>
-			<input type="text" name="recur" id="recur">
-			
-			<label for="recur-until"> - until - </label>
-			<input type="date" name="recur-until" id="recur-until">
 
 		</fieldset>
 
@@ -64,11 +53,11 @@ export function subeventTemplate(i, includeCompleted) {
 	return `
 		<div>
 			<label for="sub-title-${i}">Title:</label>
-			<input name="sub-title" type="text" id="sub-title-${i}">
+			<input name="sub-title" type="text" id="sub-title-${i}" maxlength="20" required>
 			<label for="sub-date-${i}">Date:</label>
-			<input name="sub-date" type="date" id="sub-date-${i}">
+			<input name="sub-date" type="date" id="sub-date-${i}" required>
 			<label for="sub-time-${i}">Time:</label>
-			<input name="sub-time" type="time" id="sub-time-${i}">
+			<input name="sub-time" type="time" id="sub-time-${i}" required>
 
 			${
 			includeCompleted ? `
