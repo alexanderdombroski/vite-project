@@ -2,6 +2,7 @@ import githubLogo from "../../../assets/github-logo.svg?raw";
 import { getEvents } from "../../api/event-manager.mjs";
 import { getHolidays } from "../../api/holiday.mjs";
 import { dateToISOString } from "../../utils/timereader.mjs";
+import p3 from "../../../images/chronoplan_logo.png";
 
 // Format Templates
 
@@ -62,7 +63,7 @@ export function headerTemplate() {
   return `
     <div id="global-header-left">
       <a id="logo-link" href="./index.html">
-        <img id="logo" src="./images/chronoplan_logo.png" alt="ChronoPlan Logo">
+        <img id="logo" src=${p3} alt="ChronoPlan Logo">
       </a>
       <h1 id="header-title">ChronoPlan</h1>
     </div>
