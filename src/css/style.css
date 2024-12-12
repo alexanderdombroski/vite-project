@@ -299,6 +299,22 @@ footer svg:hover {
   white-space: nowrap;
   background-color: var(--accent-color);
   border: none;
+  color: white;
+}
+
+.goal_event_link {
+  font-weight: bold;
+  background-color: white;
+  color: #004265;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.goal_event_link:hover {
+  background-color: #004265;
+  color: white;
+  transform: scale(1.1);
 }
 
 .day button:nth-of-type(1) { top: 5px }
