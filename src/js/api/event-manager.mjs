@@ -19,48 +19,58 @@ function addFormSubmitListener() {
     document.getElementById('event-form').addEventListener('submit', submitEventForm);
 }
 
+function isPastDate(inputDate) {
+    const todayISO = new Date().toISOString().split('T')[0];
+    return inputDate < todayISO;
+}
+
 function validateEventForm() {
     const form = document.getElementById('event-form');
     const date = form.querySelector('#date').value;
-    const subDate = form.querySelector('#sub-date').value;
-    const subTime = form.querySelector('#sub-time').value;
+    const subDate = form.querySelector('#sub-date');
+    const subTime = form.querySelector('#sub-time');
     const startTime = form.querySelector('#startTime').value;
     const endTime = form.querySelector('#endTime').value;
     const errorSpan = form.querySelector('#time-error');
 
-    if (date < dateToISOString(new Date())) {
+    if (!date) {
+        errorSpan.innerText = "Date is required";
+        return false;
+    }
+
+    if (!startTime) {
+        errorSpan.innerText = "Start time is required";
+        return false;
+    }
+
+    if (!endTime) {
+        errorSpan.innerText = "End time is required";
+        return false;
+    }
+
+    if (isPastDate(date)) {
         errorSpan.innerText = "Date must be in the future";
-        return false; // Validation failed
+        return false;
     }
 
-    if (date === dateToISOString(new Date())) {
-        if (startTime < new Date().toLocaleTimeString()) {
-            errorSpan.innerText = "Time must be in the future";
-            return false; // Validation failed
-        }
-    }
-
-    if (startTime && endTime && startTime >= endTime) {
+    if (startTime >= endTime) {
         errorSpan.innerText = "End time must be after start time";
-        return false; // Validation failed
-    } 
+        return false;
+    }
 
-    if (subDate ) {
-        if (subDate < dateToISOString(new Date())) {
+    if (subDate) {
+
+        subdate = subDate.value;
+        subtime = subTime.value;
+
+        if (isPastDate(subDate)) {
             errorSpan.innerText = "Subevent date must be in the future";
-            return false; // Validation failed
-        }
-
-        if (subDate === dateToISOString(new Date())) {
-            if (subTime < new Date().toLocaleTimeString()) {
-                errorSpan.innerText = "Subevent time must be in the future";
-                return false; // Validation failed
-            }
+            return false;
         }
     }
 
     errorSpan.innerText = "";
-    return true; // Validation passed
+    return true;
 }
 
 function submitEventForm(event) {
