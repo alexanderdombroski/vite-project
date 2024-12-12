@@ -22,6 +22,8 @@ function addFormSubmitListener() {
 function validateEventForm() {
     const form = document.getElementById('event-form');
     const date = form.querySelector('#date').value;
+    const subDate = form.querySelector('#sub-date').value;
+    const subTime = form.querySelector('#sub-time').value;
     const startTime = form.querySelector('#startTime').value;
     const endTime = form.querySelector('#endTime').value;
     const errorSpan = form.querySelector('#time-error');
@@ -31,13 +33,34 @@ function validateEventForm() {
         return false; // Validation failed
     }
 
+    if (date === dateToISOString(new Date())) {
+        if (startTime < new Date().toLocaleTimeString()) {
+            errorSpan.innerText = "Time must be in the future";
+            return false; // Validation failed
+        }
+    }
+
     if (startTime && endTime && startTime >= endTime) {
         errorSpan.innerText = "End time must be after start time";
         return false; // Validation failed
-    } else {
-        errorSpan.innerText = "";
-        return true; // Validation passed
+    } 
+
+    if (subDate ) {
+        if (subDate < dateToISOString(new Date())) {
+            errorSpan.innerText = "Subevent date must be in the future";
+            return false; // Validation failed
+        }
+
+        if (subDate === dateToISOString(new Date())) {
+            if (subTime < new Date().toLocaleTimeString()) {
+                errorSpan.innerText = "Subevent time must be in the future";
+                return false; // Validation failed
+            }
+        }
     }
+
+    errorSpan.innerText = "";
+    return true; // Validation passed
 }
 
 function submitEventForm(event) {

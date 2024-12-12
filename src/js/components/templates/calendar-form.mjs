@@ -59,6 +59,7 @@ export function subeventTemplate(i, includeCompleted) {
 			<input name="sub-date" type="date" id="sub-date-${i}" required>
 			<label for="sub-time-${i}">Time:</label>
 			<input name="sub-time" type="time" id="sub-time-${i}" required>
+			<span id="sub-date-error"></span>
 
 			${
 			includeCompleted ? `
