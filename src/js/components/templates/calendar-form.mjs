@@ -24,6 +24,7 @@ export function eventFormTemplate(data = {type: "event", date: ""}) {
 			<input name="startTime" id="startTime" type="time" required>
 			<label for="endTime"> - to - </label>
 			<input name="endTime" id="endTime" type="time" required>
+			<span id="time-error"></span>
 			
 			${
 			type === "goal" ? `

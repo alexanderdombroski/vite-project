@@ -19,13 +19,39 @@ function addFormSubmitListener() {
     document.getElementById('event-form').addEventListener('submit', submitEventForm);
 }
 
+function validateEventForm() {
+    const form = document.getElementById('event-form');
+    const date = form.querySelector('#date').value;
+    const startTime = form.querySelector('#startTime').value;
+    const endTime = form.querySelector('#endTime').value;
+    const errorSpan = form.querySelector('#time-error');
+
+    if (date < dateToISOString(new Date())) {
+        errorSpan.innerText = "Date must be in the future";
+        return false; // Validation failed
+    }
+
+    if (startTime && endTime && startTime >= endTime) {
+        errorSpan.innerText = "End time must be after start time";
+        return false; // Validation failed
+    } else {
+        errorSpan.innerText = "";
+        return true; // Validation passed
+    }
+}
+
 function submitEventForm(event) {
     event.preventDefault();
-    
-    // Handle Form Data
+
+    if (!validateEventForm()) {
+        console.log("Form submission prevented due to validation failure");
+        return;
+    }
+
+    // Proceed with form data handling if validation passes
     const formData = new FormData(event.target);
 
-    const calendarObject = {subevents: []};
+    const calendarObject = { subevents: [] };
     formData.forEach((value, key) => {
         if (key.startsWith("sub-")) {
             const [_, field, index] = key.split("-");
@@ -37,14 +63,13 @@ function submitEventForm(event) {
     });
 
     // Store Data
-
-    const year = calendarObject.date.slice(0,4);
+    const year = calendarObject.date.slice(0, 4);
     readEventsFromStorage(year);
 
     addEvent(calendarObject);
 
     localStorage.setItem(`events-${year}`, JSON.stringify(events));
-    
+
     globalThis.location.href = 'calendar.html';
 }
 
