@@ -7,10 +7,10 @@ import { dateToISOString } from "../../utils/timereader.mjs";
 
 export function dayTemplate(dayNumber, date) {
   return `
-    <div class="day" data-date="${dateToISOString(date)}}">
+    <div class="day" data-date="${dateToISOString(date)}">
       <span>${dayNumber}</span>
-      <button data-date="${dateToISOString(date)}" data-type="event">+</button>
-      <button data-date="${dateToISOString(date)}" data-type="goal">+</button>
+      <button data-type="event">+</button>
+      <button data-type="goal">+</button>
       ${getHolidays(date)
         .map((e) => holidayTemplate(e))
         .join("")}

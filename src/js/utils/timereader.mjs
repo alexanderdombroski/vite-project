@@ -74,7 +74,7 @@ function defaultYear(date = new Date()) {
     return new Date(new Date().getFullYear(), date.getMonth(), date.getDate());
 }
 function dateToISOString(date = new Date()) {
-    return date.toISOString('en-GB').split('T')[0];
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate()).toISOString('en-GB').split('T')[0];
 }
 function dateToString(date = new Date()) {
     return date.toLocaleDateString('en-GB').split('T')[0];

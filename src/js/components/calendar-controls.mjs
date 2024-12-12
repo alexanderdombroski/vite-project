@@ -48,7 +48,7 @@ function switchView() {
 
 function addCalendarItem(event) {
     if (event.target.tagName !== 'BUTTON') return;
-    globalThis.location.href = `new-event.html?date=${event.target.dataset.date}&type=${event.target.dataset.type}`;
+    globalThis.location.href = `new-event.html?date=${event.target.parentElement.dataset.date}&type=${event.target.dataset.type}`;
 }
 
 

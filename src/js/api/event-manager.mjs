@@ -51,7 +51,7 @@ function submitEventForm(event) {
 // ----------------- Event Interaction -----------------
 
 function getEvents(date = new Date()) {
-    return (events[dateToISOString(defaultYear(date))] ?? []).concat([]);
+    return (events[dateToISOString(date)] ?? []).concat([]);
 }
 
 function addEvent(event) {
