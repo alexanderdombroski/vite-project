@@ -8,12 +8,13 @@ export function eventFormTemplate(data = {type: "event", date: ""}) {
 		<fieldset>
 			<legend>${capitalize(type)} Information</legend>
 
-			<label for="type">Type:</label>
+			<label for="type" hidden>Type:</label>
 			<input name="type" id="type" type="text" value="${type}" hidden>
 
 			<label for="title">Title:</label>
 			<input name="title" id="title" type="text" maxlength="20" required>
 
+			<br>
 			<label for="desc">Description:</label>
 			<input name="desc" id="desc" type="text" maxlength="100"></input>           
 
